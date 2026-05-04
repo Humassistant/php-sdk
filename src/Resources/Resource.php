@@ -9,6 +9,6 @@ use Humassistant\Sdk\HttpClient;
 abstract class Resource
 {
     public function __construct(
-        protected readonly HttpClient $http,
+        protected HttpClient $http,
     ) {}
 }

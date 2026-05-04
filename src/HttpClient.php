@@ -19,10 +19,10 @@ class HttpClient
     private Client $client;
 
     public function __construct(
-        private readonly string $baseUrl,
+        private string $baseUrl,
         private ?string $token = null,
         private ?string $apiKey = null,
-        private readonly int $timeout = 30,
+        private int $timeout = 30,
     ) {
         $this->client = new Client([
             'base_uri' => rtrim($this->baseUrl, '/') . '/',

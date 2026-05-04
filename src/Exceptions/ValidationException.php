@@ -8,7 +8,7 @@ class ValidationException extends HumassistantException
 {
     public function __construct(
         string $message,
-        private readonly array $errors = [],
+        private array $errors = [],
         int $code = 422,
         ?\Throwable $previous = null,
     ) {
