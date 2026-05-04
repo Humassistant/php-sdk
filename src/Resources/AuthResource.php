@@ -42,7 +42,7 @@ class AuthResource extends Resource
      */
     public function token(string $apiKey): array
     {
-        $response = $this->http->post('auth/token', ['api_key' => $apiKey]);
+        $response = $this->http->post('auth/token', ['key' => $apiKey]);
 
         if (isset($response['data']['access_token'])) {
             $this->http->setToken($response['data']['access_token']);
