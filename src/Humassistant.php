@@ -48,15 +48,21 @@ class Humassistant
      * @param string $baseUrl The base URL of the Humassistant API (e.g. https://app.humassistant.com/api)
      * @param string|null $token JWT token for authentication
      * @param string|null $apiKey API key for authentication (alternative to JWT)
+     * @param string|null $organizationUuid Organization UUID for multi-org accounts
      * @param int $timeout HTTP request timeout in seconds
      */
     public function __construct(
         string $baseUrl = 'https://app.humassistant.com/api',
         ?string $token = null,
         ?string $apiKey = null,
+        ?string $organizationUuid = null,
         int $timeout = 30,
     ) {
         $this->http = new HttpClient($baseUrl, $token, $apiKey, $timeout);
+
+        if ($organizationUuid) {
+            $this->http->setOrganizationUuid($organizationUuid);
+        }
     }
 
     /**
@@ -75,6 +81,24 @@ class Humassistant
     public function getToken(): ?string
     {
         return $this->http->getToken();
+    }
+
+    /**
+     * Set the organization UUID for multi-org accounts.
+     */
+    public function setOrganizationUuid(string $uuid): self
+    {
+        $this->http->setOrganizationUuid($uuid);
+
+        return $this;
+    }
+
+    /**
+     * Get the current organization UUID.
+     */
+    public function getOrganizationUuid(): ?string
+    {
+        return $this->http->getOrganizationUuid();
     }
 
     /**

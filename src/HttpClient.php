@@ -18,6 +18,8 @@ class HttpClient
 {
     private Client $client;
 
+    private ?string $organizationUuid = null;
+
     public function __construct(
         private string $baseUrl,
         private ?string $token = null,
@@ -39,6 +41,16 @@ class HttpClient
     public function getToken(): ?string
     {
         return $this->token;
+    }
+
+    public function setOrganizationUuid(string $uuid): void
+    {
+        $this->organizationUuid = $uuid;
+    }
+
+    public function getOrganizationUuid(): ?string
+    {
+        return $this->organizationUuid;
     }
 
     public function get(string $uri, array $query = []): array
@@ -126,6 +138,10 @@ class HttpClient
             $headers['Authorization'] = 'Bearer ' . $this->token;
         } elseif ($this->apiKey) {
             $headers['Authorization'] = 'Bearer ' . $this->apiKey;
+        }
+
+        if ($this->organizationUuid) {
+            $headers['X-Organization-Uuid'] = $this->organizationUuid;
         }
 
         return $headers;
