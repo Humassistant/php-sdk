@@ -435,7 +435,6 @@ try {
 | `documents()` | `DocumentResource` | Legal documents, accept |
 | `voice()` | `VoiceResource` | Voice options, synthesis |
 | `affiliates()` | `AffiliateResource` | Dashboard, earnings |
-| `workspace()` | `WorkspaceResource` | Folders, files, threads, skills |
 
 ## License
 

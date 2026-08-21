@@ -36,7 +36,6 @@ use Humassistant\Sdk\Resources\TwilioResource;
 use Humassistant\Sdk\Resources\VoiceResource;
 use Humassistant\Sdk\Resources\WhatsAppResource;
 use Humassistant\Sdk\Resources\WidgetResource;
-use Humassistant\Sdk\Resources\WorkspaceResource;
 
 class Humassistant
 {
@@ -267,10 +266,5 @@ class Humassistant
     public function affiliates(): AffiliateResource
     {
         return new AffiliateResource($this->http);
-    }
-
-    public function workspace(): WorkspaceResource
-    {
-        return new WorkspaceResource($this->http);
     }
 }
