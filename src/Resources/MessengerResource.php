@@ -7,14 +7,6 @@ namespace Humassistant\Sdk\Resources;
 class MessengerResource extends Resource
 {
     /**
-     * Save Facebook user access token.
-     */
-    public function saveToken(array $data): array
-    {
-        return $this->http->post('messenger/oauth/token', $data);
-    }
-
-    /**
      * Disconnect Meta.
      */
     public function disconnect(): array
